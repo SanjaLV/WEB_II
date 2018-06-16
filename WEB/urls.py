@@ -21,9 +21,11 @@ from django.urls import path, include
 urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
+
 ]
 
 urlpatterns += i18n_patterns(
     url(r'^', include('main.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 )
 
