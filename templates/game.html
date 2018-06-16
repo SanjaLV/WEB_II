@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+<div id="sidebar">
+
+    <ul>
+        <a href="/game"> {% trans "Play" %}</a>
+        <a href={% url character.home %}> {% trans "Inventory" %}</a>
+    </ul>
+
+    </div>
+
+{% block content %}
+    <h1>Hello {{ user.username }}</h1>
+    <h2>{% trans "Your gold :" %} {{ char.gold }} </h2>
+    <a href="/game/freegoold">{% trans "Get free Gold" %}</a>
+    <a href="/game/getItem">{% trans "Get Item (10 Gold)" %}</a>
+
+
+{% endblock %}
