@@ -61,7 +61,7 @@ def GET_NAME():
     return dd, name
 
 
-def GENERATE_AFFIXES(pk, rarity, ilvl, item_tupe):
+def GENERATE_AFFIXES(pk, rarity, item_tupe):
     res = 0
 
     item = Item.objects.get(pk=pk)
@@ -99,7 +99,7 @@ def GENERATE_NEW_ITEM(char_pk):
 
     new_i.item_tupe, new_i.item_name = a, b
 
-    new_i.item_level = GENERATE_AFFIXES(new_i.pk, new_i.item_rarity, new_i.item_level, new_i.item_tupe)
+    new_i.item_level = GENERATE_AFFIXES(new_i.pk, new_i.item_rarity, new_i.item_tupe)
 
     new_i.save()
 
