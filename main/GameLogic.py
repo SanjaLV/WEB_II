@@ -122,6 +122,7 @@ class LocalItem():
         self.name = item.item_name
         self.stats = [0, 0, 0, 0, 0, 0, 0]
         self.rarity = item.item_rarity
+        self.ilvl = item.item_level
 
         afxs = Affix.objects.filter(item_id=item.pk)
         for x in afxs:

@@ -1,7 +1,6 @@
 
 
-<div class="item_info" id="{{ item.pk }}">
-
+<button class="item_info" id="{{ item.pk }}" onmouseenter="ClickItem({{ item.pk }})">
     {% if item.rarity == 0  %}
         <span style="color: #696969; ">
     {% elif item.rarity == 1 %}
@@ -12,9 +11,9 @@
         <span style="color: darkorange; ">
     {% endif %}
 
-    {{ item.name }}
-
+        {{ item.name }}
     </span>
+</button>
+<br>
 
 
-</div>
