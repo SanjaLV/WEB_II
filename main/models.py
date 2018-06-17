@@ -6,8 +6,13 @@ from django.contrib.auth.models import User
 
 
 class Character(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True),
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     gold = models.BigIntegerField(default=0)
+    eq_weapon = models.ForeignKey('Item', on_delete=models.SET_NULL, null=True, related_name="weapon")
+    eq_helm   = models.ForeignKey('Item', on_delete=models.SET_NULL, null=True, related_name="helm")
+    eq_armor  = models.ForeignKey('Item', on_delete=models.SET_NULL, null=True, related_name="armor")
+    eq_offhand= models.ForeignKey('Item', on_delete=models.SET_NULL, null=True, related_name="offhand")
+
 
 
 class Item(models.Model):
@@ -16,6 +21,7 @@ class Item(models.Model):
     item_tupe = models.IntegerField(null=True)
     item_rarity = models.IntegerField(null=True)
     character_id = models.ForeignKey(Character, on_delete=models.SET_NULL,null=True)
+    used = models.BooleanField(default=False)
 
 class Affix(models.Model):
     affix_tupe = models.IntegerField(null=True)

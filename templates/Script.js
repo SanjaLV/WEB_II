@@ -20,3 +20,8 @@ function ClickItem(id) {
     last_item = id;
 
 }
+
+function Equip(id) {
+    str = "/game/items/eq/" + id;
+    window.location.href=str;
+}

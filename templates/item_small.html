@@ -1,19 +1,29 @@
 
 
-<button class="item_info" id="{{ item.pk }}" onmouseenter="ClickItem({{ item.pk }})">
-    {% if item.rarity == 0  %}
-        <span style="color: #696969; ">
-    {% elif item.rarity == 1 %}
-        <span style="color: blue; ">
-    {% elif item.rarity == 2 %}
-        <span style="color: yellow; ">
-    {% else %}
-        <span style="color: darkorange; ">
-    {% endif %}
+{% if item %}
 
-        {{ item.name }}
-    </span>
-</button>
+    <button class="item_info" id="{{ item.pk }}" onmouseenter="ClickItem({{ item.pk }})" onclick="Equip({{ item.pk }})">
+        {% if item.rarity == 0  %}
+            <span style="color: #696969; ">
+        {% elif item.rarity == 1 %}
+            <span style="color: blue; ">
+        {% elif item.rarity == 2 %}
+            <span style="color: yellow; ">
+        {% else %}
+            <span style="color: darkorange; ">
+        {% endif %}
+
+            {{ item.name }}
+        </span>
+    </button>
+{% else %}
+    <button class="item_info" id="0">
+        Empty
+    </button>
+{% endif %}
+
+
 <br>
+
 
 
