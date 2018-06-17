@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, User
 from django.shortcuts import render, redirect
+from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 
 from django.http import HttpResponseForbidden
@@ -11,6 +12,12 @@ from django.http import HttpResponseForbidden
 # Create your views here.
 from main.GameLogic import GENERATE_NEW_ITEM, LocalItem, ValidateItem, RemoveItem, EquipItem
 from main.models import Character, Item
+
+
+def set_language(request,code):
+    translation.activate(code)
+    request.session[translation.LANGUAGE_SESSION_KEY] = code
+    return redirect('/')
 
 
 def index(request, msg=""):

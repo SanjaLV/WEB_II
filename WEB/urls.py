@@ -26,6 +26,6 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^', include('main.urls')),
-    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls'))
 )
 

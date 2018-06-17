@@ -21,6 +21,8 @@
         {% block topnav %}
             <a href="/">{% trans "Home" %}</a>
             <a href="/Auction">{% trans "Auction" %}</a>
+            <a href="/ru/language/ru">{% trans "Russian" %}</a>
+            <a href="/en/language/en">{% trans "English" %}</a>
             {% if user.is_authenticated %}
                 <a href="accounts/logout">{% trans "Logout" %}</a>
             {% else %}
