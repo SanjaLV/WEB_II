@@ -51,6 +51,7 @@ class AuctionLog(models.Model):
     time = models.DateTimeField(null=True)
     bought = models.BooleanField(default=False)
     price = models.IntegerField(default=0)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True)
 
 
 
