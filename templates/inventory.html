@@ -1,0 +1,46 @@
+{% extends "game.html" %}
+
+{% block script %}
+
+
+    var Items = {}
+
+    {% for x in items %}
+        {% include "item_js.js" with item=x only %}
+    {% endfor %}
+
+
+    {% load static %}
+    {% include "Script.js" %}
+
+
+{% endblock %}
+
+
+
+{% block main_window %}
+
+    <div id="mono">
+        <h2>Name {{ user.username }}</h2>
+        <h2>Strength : {{ stats.0 }}</h2>
+        <h2>Dexterity: {{ stats.1 }}</h2>
+        <h2>Vitality : {{ stats.2 }}</h2>
+        <h2>Damage   : {{ stats.3 }}</h2>
+        <h2>Armor    : {{ stats.4 }}</h2>
+        <h2>Dodge    : {{ stats.5 }}</h2>
+        <h2>Critical : {{ stats.6 }}</h2>
+        <h2>Item lvl : {{ ilvl }}</h2>
+
+
+    </div>
+
+    <div id="scrolls">
+
+        {% for x in items %}
+            {% include "item_small.html" with item=x only %}
+        {% endfor %}
+
+    </div>
+
+
+{% endblock %}

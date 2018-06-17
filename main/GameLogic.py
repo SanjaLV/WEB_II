@@ -108,13 +108,22 @@ def GENERATE_NEW_ITEM(char_pk):
     
     new_i.item_level = GENERATE_AFFIXES(new_i.pk, new_i.item_rarity, new_i.item_level, new_i.item_tupe)
 
-    print("Tupe:", new_i.item_tupe)
-    print("Name:", new_i.item_name)
-    print("ilvl:", new_i.item_level)
 
     new_i.save()
 
 
     return new_i.pk
 
+
+
+class LocalItem():
+    def __init__(self, item):
+        self.pk = item.pk
+        self.name = item.item_name
+        self.stats = [0, 0, 0, 0, 0, 0, 0]
+        self.rarity = item.item_rarity
+
+        afxs = Affix.objects.filter(item_id=item.pk)
+        for x in afxs:
+            self.stats[x.affix_tupe] += x.affix_value
 

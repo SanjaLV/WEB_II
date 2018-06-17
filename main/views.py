@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 from django.http import HttpResponseForbidden
 
 # Create your views here.
-from main.GameLogic import GENERATE_NEW_ITEM
+from main.GameLogic import GENERATE_NEW_ITEM, LocalItem
 from main.models import Character, Item
 
 
@@ -66,3 +66,31 @@ def getItem(request):
     else:
         return HttpResponseForbidden()
 
+
+
+def Inventory(request):
+    if request.user.is_authenticated:
+
+        current_user = request.user
+        char = Character.objects.get(pk=current_user.pk)
+
+        itemz = Item.objects.filter(character_id=char.pk)
+
+        stats = [0, 0, 0, 0, 0, 0, 0]
+        ilvl = 0
+
+        LocalItems = []
+
+
+        for x in itemz:
+            ilvl += x.item_level
+            local_item = LocalItem(x)
+            LocalItems.append(local_item)
+            for x in range(len(stats)):
+                stats[x] += local_item.stats[x]
+
+        context = {'user':current_user, 'ilvl': ilvl, 'stats': stats, 'items': LocalItems}
+        return render(request, 'inventory.html', context=context)
+
+    else:
+        return HttpResponseForbidden()

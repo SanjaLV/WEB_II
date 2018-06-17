@@ -1,0 +1,20 @@
+
+
+<div class="item_info" id="{{ item.pk }}">
+
+    {% if item.rarity == 0  %}
+        <span style="color: #696969; ">
+    {% elif item.rarity == 1 %}
+        <span style="color: blue; ">
+    {% elif item.rarity == 2 %}
+        <span style="color: yellow; ">
+    {% else %}
+        <span style="color: darkorange; ">
+    {% endif %}
+
+    {{ item.name }}
+
+    </span>
+
+
+</div>
