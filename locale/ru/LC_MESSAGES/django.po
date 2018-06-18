@@ -22,19 +22,19 @@ msgstr ""
 
 #: templates/auction/Auction.html:6
 msgid "Browse"
-msgstr ""
+msgstr "Смотреть"
 
 #: templates/auction/Auction.html:7
 msgid "Active"
-msgstr ""
+msgstr "Активные"
 
 #: templates/auction/Auction.html:8 templates/auction/auction_make.html:51
 msgid "Create"
-msgstr ""
+msgstr "Создать"
 
 #: templates/auction/Auction.html:9
 msgid "History"
-msgstr ""
+msgstr "История"
 
 #: templates/auction/Auction.html:19
 #, fuzzy
@@ -44,12 +44,12 @@ msgstr "золото"
 
 #: templates/auction/BrowseAuction.html:70
 msgid "Max Price"
-msgstr ""
+msgstr "Макс. Цена"
 
 #: templates/auction/BrowseAuction.html:74
 #: templates/auction/BrowseAuction.html:115 templates/items/stat_table.html:7
 msgid "iLvl"
-msgstr ""
+msgstr "iLvl"
 
 #: templates/auction/BrowseAuction.html:78
 msgid "Str"
@@ -81,98 +81,98 @@ msgstr ""
 
 #: templates/auction/BrowseAuction.html:105
 msgid "Search"
-msgstr ""
+msgstr "Поиск"
 
 #: templates/auction/BrowseAuction.html:114
 #: templates/auction/auction_active.html:38
 #: templates/auction/auction_active.html:80
 msgid "Item"
-msgstr ""
+msgstr "Предмет"
 
 #: templates/auction/BrowseAuction.html:116
 #: templates/auction/auction_active.html:41
 #: templates/auction/auction_active.html:83
 msgid "Current bid"
-msgstr ""
+msgstr "Текущая ставка"
 
 #: templates/auction/BrowseAuction.html:117
 #: templates/auction/auction_active.html:44
 #: templates/auction/auction_active.html:86
 msgid "Buyout price"
-msgstr ""
+msgstr "Цена выкупа"
 
 #: templates/auction/BrowseAuction.html:118
 #: templates/auction/BrowseAuction.html:127
 #: templates/auction/auction_active.html:89
 msgid "Place bet"
-msgstr ""
+msgstr "Поставить ставку"
 
 #: templates/auction/BrowseAuction.html:119
 #: templates/auction/BrowseAuction.html:128
 #: templates/auction/auction_active.html:92
 msgid "Buyout"
-msgstr ""
+msgstr "Выкупить"
 
 #: templates/auction/auction_active.html:34
 msgid "My Loots"
-msgstr ""
+msgstr "Мои лоты"
 
 #: templates/auction/auction_active.html:47
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 #: templates/auction/auction_active.html:76
 msgid "My Bets"
-msgstr ""
+msgstr "Мои ставки"
 
 #: templates/auction/auction_make.html:42
 msgid "Price"
-msgstr ""
+msgstr "Цена"
 
 #: templates/auction/auction_make.html:45
 msgid "Biddable"
-msgstr ""
+msgstr "Можно ставить ставки"
 
 #: templates/auction/auction_make.html:48
 msgid "Start bid"
-msgstr ""
+msgstr "Начальная ставка"
 
 #: templates/base.html:22
 msgid "Home"
-msgstr ""
+msgstr "Дом"
 
 #: templates/base.html:23
 msgid "Auction"
-msgstr ""
+msgstr "Аукцион"
 
 #: templates/base.html:24
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
 
 #: templates/base.html:25
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 #: templates/base.html:27
 msgid "Logout"
-msgstr ""
+msgstr "Выйти"
 
 #: templates/base.html:29 templates/registration/login.html:4
 #: templates/registration/login.html:8
 msgid "Login"
-msgstr ""
+msgstr "Войти"
 
 #: templates/base.html:48
 msgid "Hello, Wellcome to this place!"
-msgstr ""
+msgstr "Привет, добро пожаловать в это место!"
 
 #: templates/game.html:7
 msgid "Play"
-msgstr ""
+msgstr "Играть"
 
 #: templates/game.html:8
 msgid "Inventory"
-msgstr ""
+msgstr "Инвентарь"
 
 #: templates/game.html:22
 #, fuzzy
@@ -182,104 +182,104 @@ msgstr "Здарова!"
 
 #: templates/game.html:23
 msgid "Your gold :"
-msgstr ""
+msgstr "Твое золото:"
 
 #: templates/game.html:24
 msgid "Get free Gold"
-msgstr ""
+msgstr "Получить золото"
 
 #: templates/game.html:25
 msgid "Get Item"
-msgstr ""
+msgstr "Получить предмет"
 
 #: templates/inventory.html:29
 msgid "Name"
-msgstr ""
+msgstr "Имя"
 
 #: templates/inventory.html:30 templates/items/stat_table.html:10
 msgid "Strength"
-msgstr ""
+msgstr "Сила"
 
 #: templates/inventory.html:31 templates/items/stat_table.html:13
 msgid "Dexterity"
-msgstr ""
+msgstr "Ловкость"
 
 #: templates/inventory.html:32 templates/items/stat_table.html:16
 msgid "Vitality"
-msgstr ""
+msgstr "Живучесть"
 
 #: templates/inventory.html:33 templates/items/stat_table.html:19
 msgid "Damage"
-msgstr ""
+msgstr "Урон"
 
 #: templates/inventory.html:34 templates/inventory.html:40
 #: templates/items/stat_table.html:22
 msgid "Armor"
-msgstr ""
+msgstr "Броня"
 
 #: templates/inventory.html:35 templates/items/stat_table.html:25
 msgid "Dodge"
-msgstr ""
+msgstr "Уворот"
 
 #: templates/inventory.html:36
 msgid "Critical"
-msgstr ""
+msgstr "Шанс критического удара"
 
 #: templates/inventory.html:37
 msgid "Item lvl"
-msgstr ""
+msgstr "Уровень предмета"
 
 #: templates/inventory.html:38
 msgid "Weapon"
-msgstr ""
+msgstr "Оружие"
 
 #: templates/inventory.html:39
 msgid "Helm"
-msgstr ""
+msgstr "Шлем"
 
 #: templates/inventory.html:41
 msgid "Offhand"
-msgstr ""
+msgstr "Вспомогательный предмет в слот рядом с оружием"
 
 #: templates/items/item_small.html:21
 msgid "Empty"
-msgstr ""
+msgstr "Пусто"
 
 #: templates/items/stat_table.html:4
 msgid "Itemname"
-msgstr ""
+msgstr "Название предмета"
 
 #: templates/items/stat_table.html:28
 msgid "Critical Hit"
-msgstr ""
+msgstr "Шанс критического удара"
 
 #: templates/items/stat_table.html:33
 msgid "none"
-msgstr ""
+msgstr "пусто"
 
 #: templates/registration/login.html:11
 msgid "Lost password?"
-msgstr ""
+msgstr "Забыли пароль?"
 
 #: templates/registration/login.html:12
 msgid "Register"
-msgstr ""
+msgstr "Зарегистрироваться"
 
 #: templates/registration/password_reset_confirm.html:6
 msgid "Please enter (and confirm) your new password"
-msgstr ""
+msgstr "Пожалуйста, введите (и подтвердите) ваш новый пароль"
 
 #: templates/registration/password_reset_confirm.html:14
 msgid "New password"
-msgstr ""
+msgstr "Новый пароль"
 
 #: templates/registration/password_reset_confirm.html:19
 msgid "Confirm password"
-msgstr ""
+msgstr "Подтвердить пароль"
 
 #: templates/registration/password_reset_confirm.html:29
 msgid "Password reset failed"
-msgstr ""
+msgstr "Восстановление пароля не удалось"
 
 #: templates/registration/password_reset_confirm.html:30
 msgid ""
