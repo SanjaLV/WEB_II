@@ -132,6 +132,22 @@ class LocalLoot:
         self.next_bid = loot.next_bid
         self.item_id = None
 
+class LocalHistory:
+    def __init__(self, AH):
+        self.item = LocalItem(AH.item)
+        self.pk = AH.pk
+        self.time = AH.time
+        self.bought = AH.bought
+        self.price = AH.price
+
+class LocalBet:
+    def __init__(self,bet):
+        self.pk = bet.pk
+        self.loot_pk = bet.loot_id.pk
+        self.active = bet.active
+        self.next_bet = bet.next_bid
+        self.buy_out = bet.buy_out
+
 
 def ValidateItem(char, item, inUsed=True):
     if item.character_id != char:

@@ -1,0 +1,47 @@
+{% extends "auction/Auction.html" %}
+{% load i18n %}
+
+{% block script %}
+
+    {% include "items/Script.js" %}
+    {% include "items/on_click_do_nothing.js" %}
+
+    {% for x in logs %}
+        {% include "items/item_js.js" with item=x.item only %}
+    {% endfor %}
+
+{% endblock %}
+
+
+{% block main %}
+
+    {% include "items/stat_table.html" %}
+
+    <div class="main_aa">
+        <div class="lots">
+
+            {% for x in logs %}
+                <div class="head">
+                    <div class="info_long">
+                        {{ x.time }}
+                    </div>
+                    <div class="info">
+                        {% if x.bought == True %}
+                            <font color="red">
+                                -{{ x.price }}
+                            </font>
+                        {% else %}
+                            <font color="green">
+                                +{{ x.price }}
+                            </font>
+                        {% endif %}
+                    </div>
+                    <div class="info">
+                        {% include "items/item_small.html" with item=x.item only %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
