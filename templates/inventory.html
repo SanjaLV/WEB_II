@@ -26,19 +26,19 @@
 {% block main_window %}
 
     <div id="mono">
-        Name {{ user.username }}<br>
-        Strength : {{ stats.0 }}<br>
-        Dexterity: {{ stats.1 }}<br>
-        Vitality : {{ stats.2 }}<br>
-        Damage   : {{ stats.3 }}<br>
-        Armor    : {{ stats.4 }}<br>
-        Dodge    : {{ stats.5 }}<br>
-        Critical : {{ stats.6 }}<br>
-        Item lvl : {{ ilvl }}<br>
-        Weapon   : {% include "items/item_small.html" with item=eq_items.0 only %}
-        Helm     : {% include "items/item_small.html" with item=eq_items.1 only %}
-        Armor    : {% include "items/item_small.html" with item=eq_items.2 only %}
-        Offhand  : {% include "items/item_small.html" with item=eq_items.3 only %}
+        {% trans "Name" %} {{ user.username }}<br>
+        {% trans "Strength" %} : {{ stats.0 }}<br>
+        {% trans "Dexterity" %}: {{ stats.1 }}<br>
+        {% trans "Vitality" %} : {{ stats.2 }}<br>
+        {% trans "Damage" %}   : {{ stats.3 }}<br>
+        {% trans "Armor" %}    : {{ stats.4 }}<br>
+        {% trans "Dodge" %}    : {{ stats.5 }}<br>
+        {% trans "Critical" %} : {{ stats.6 }}<br>
+        {% trans "Item lvl" %} : {{ ilvl }}<br>
+        {% trans "Weapon" %}   : {% include "items/item_small.html" with item=eq_items.0 only %}
+        {% trans "Helm" %}     : {% include "items/item_small.html" with item=eq_items.1 only %}
+        {% trans "Armor" %}    : {% include "items/item_small.html" with item=eq_items.2 only %}
+        {% trans "Offhand" %}  : {% include "items/item_small.html" with item=eq_items.3 only %}
 
 
     </div>

@@ -67,42 +67,42 @@
                     <option {% if filter.tupe ==  3 %} selected {% endif %} value="3">Offhand</option>
                   </select>
                 <div class="input">
-                    <label for="max_price">Max Price</label>
+                    <label for="max_price">{% trans "Max Price" %}</label>
                     <input type="number" name="max_price" value="{{ filter.max_price }}">
                 </div>
                 <div class="input">
-                    <label for="ilvl">iLvl</label>
+                    <label for="ilvl">{% trans "iLvl" %}</label>
                     <input type="number" name="ilvl" value="{{ filter.ilvl }}">
                 </div>
                 <div class="input">
-                    <label for="str">Str</label>
+                    <label for="str">{% trans "Str" %}</label>
                     <input type="number" name="str" value="{{ filter.str }}">
                 </div>
                 <div class="input">
-                    <label for="dex">Dex</label>
+                    <label for="dex">{% trans "Dex" %}</label>
                     <input type="number" name="dex" value="{{ filter.dex }}">
                 </div>
                 <div class="input">
-                    <label for="vit">Vit</label>
+                    <label for="vit">{% trans "Vit" %}</label>
                     <input type="number" name="vit" value="{{ filter.vit }}">
                 </div>
                 <div class="input">
-                    <label for="dmg">Dmg</label>
+                    <label for="dmg">{% trans "Dmg" %}</label>
                     <input type="number" name="dmg" value="{{ filter.dmg }}">
                 </div>
                 <div class="input">
-                    <label for="arm">Arm</label>
+                    <label for="arm">{% trans "Arm" %}</label>
                     <input type="number" name="arm" value="{{ filter.arm }}">
                 </div>
                 <div class="input">
-                    <label for="dod">Dod</label>
+                    <label for="dod">{% trans "Dod" %}</label>
                     <input type="number" name="dod" value="{{ filter.dod }}">
                 </div>
                 <div class="input">
-                    <label for="crh">Crh</label>
+                    <label for="crh">{% trans "Crh" %}</label>
                     <input type="number" name="crh" value="{{ filter.crh }}">
                 </div>
-                <div class="butt" onclick="Submit()">Search</div>
+                <div class="butt" onclick="Submit()">{% trans "Search" %}</div>
             </form>
 
         </div>
@@ -111,12 +111,12 @@
             {% include "items/stat_table.html" %}
 
             <div class="head">
-                <div class="item">Item</div>
-                <div class="item">iLvl</div>
-                <div class="item">Current bid</div>
-                <div class="item">Buyout price</div>
-                <div class="item">Place bet</div>
-                <div class="item">Buyout</div>
+                <div class="item">{% trans "Item" %}</div>
+                <div class="item">{% trans "iLvl" %}</div>
+                <div class="item">{% trans "Current bid" %}</div>
+                <div class="item">{% trans "Buyout price" %}</div>
+                <div class="item">{% trans "Place bet" %}</div>
+                <div class="item">{% trans "Buyout" %}</div>
             </div>
             {% for x in loots %}
                 <div class ="head">
@@ -124,8 +124,8 @@
                     <div class="info">{{ x.item_id.ilvl }}</div>
                     <div class="info">{{ x.next_bid }}</div>
                     <div class="info">{{ x.buy_out }}</div>
-                    {% if x.biddable == True and char.gold >= x.next_bid %}<div class="butt" onclick="MakeBet({{ x.pk }})"> <b> Place bet </b> </div>{% else %}<div class="butt"> --- </div>{% endif %}
-                    {% if char.gold >= x.buy_out %}<div class="butt" onclick="BuyItem({{ x.pk }})"><b>Buyout</b></div>{% else %} <div class="butt"> --- </div> {% endif %}
+                    {% if x.biddable == True and char.gold >= x.next_bid %}<div class="butt" onclick="MakeBet({{ x.pk }})"> <b> {% trans "Place bet" %} </b> </div>{% else %}<div class="butt"> --- </div>{% endif %}
+                    {% if char.gold >= x.buy_out %}<div class="butt" onclick="BuyItem({{ x.pk }})"><b>{% trans "Buyout" %}</b></div>{% else %} <div class="butt"> --- </div> {% endif %}
                 </div>
             {% endfor %}
 
