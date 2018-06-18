@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Auction House</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<header>
+    <div class="menu">
+        <a class="nav" href="Browse/">Browse</a>
+        <a class="nav" href="Active/">Active</a>
+        <a class="nav" href="Create/">Create</a>
+        <a class="nav" href="Log/">Log</a>
+    </div>
+</header>
+<body>
+    <div class="main">
+        <div class="leftmenu">
+            <form action="-----" id="itemform">
+                <select name="item" form="itemform">
+                    <option value="Helm">Helm</option>
+                    <option value="Weapon">Weapon</option>
+                    <option value="Armor">Armor</option>
+                    <option value="Offhand">Offhand</option>
+                  </select>
+                <div class="input">
+                    <label for="ilvl">iLvl</label>
+                    <input type="number" name="ilvl">
+                </div>
+                <div class="input">
+                    <label for="str">Str</label>
+                    <input type="number" name="str">
+                </div>
+                <div class="input">
+                    <label for="dex">Dex</label>
+                    <input type="number" name="dex">
+                </div>
+                <div class="input">
+                    <label for="vit">Vit</label>
+                    <input type="number" name="vit">
+                </div>
+                <div class="input">
+                    <label for="dmg">Dmg</label>
+                    <input type="number" name="dmg">
+                </div>
+                <div class="input">
+                    <label for="arm">Arm</label>
+                    <input type="number" name="arm">
+                </div>
+                <div class="input">
+                    <label for="dod">Dod</label>
+                    <input type="number" name="dod">
+                </div>
+                <div class="input">
+                    <label for="crh">Crh</label>
+                    <input type="number" name="crh">
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="lots">
+            <div class="head">
+                <div class="item">Item</div>
+                <div class="item">iLvl</div>
+                <div class="item">Current bid</div>
+                <div class="item">Buyout price</div>
+                <div class="item">Place bet</div>
+                <div class="item">Buyout</div>
+            </div>
+            <div class="head">
+                <div class="info">Helm</div>
+                <div class="info">120</div>
+                <div class="info">15</div>
+                <div class="info">60</div>
+                <div class="butt"><b>Place bet</b></div> <!-- can change <div> to button or smth-->
+                <div class="butt"><b>Buyout</b></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
