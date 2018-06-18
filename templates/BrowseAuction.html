@@ -39,6 +39,17 @@
 
     }
 
+    function MakeBet(loot_id) {
+        str = "/auction/bet/" + loot_id;
+        window.location = str;
+    }
+
+    function BuyItem(loot_id) {
+        str = "/auction/buy/" + loot_id;
+        window.location = str;
+    }
+
+
 {% endblock %}
 
 {% block main %}
@@ -87,10 +98,11 @@
                 </div>
                 <div class="input">
                     <label for="crh">Crh</label>
-                    <input type="number" name="crh" value="{{ filter.chr }}">
+                    <input type="number" name="crh" value="{{ filter.crh }}">
                 </div>
-                <button onclick="Submit()">Search</button>
+                <div class="butt" onclick="Submit()">Search</div>
             </form>
+
         </div>
         <div class="lots">
             <div class="head">
@@ -101,17 +113,15 @@
                 <div class="item">Place bet</div>
                 <div class="item">Buyout</div>
             </div>
-            <div class="head">
-                <div class="info">Helm</div>
-                <div class="info">120</div>
-                <div class="info">15</div>
-                <div class="info">60</div>
-                <div class="butt"><b>Place bet</b></div> <!-- can change <div> to button or smth-->
-                <div class="butt"><b>Buyout</b></div>
-            </div>
-
             {% for x in loots %}
-                {{ x.item_id.item_name }} {{ x.next_bid }} {{ x.end_time }}
+                <div class ="head">
+                    <div class="info">{{ x.item_id.item_name }}</div>
+                    <div class="info">{{ x.item_id.item_level }}</div>
+                    <div class="info">{{ x.next_bid }}</div>
+                    <div class="info">{{ x.buy_out }}</div>
+                    {% if x.biddable == True and char.gold >= x.next_bid %}<div class="butt" onclick="MakeBet({{ x.pk }})"> <b> Place bet </b> </div>{% else %}<div class="butt"> --- </div>{% endif %}
+                    {% if char.gold >= x.buy_out %}<div class="butt" onclick="BuyItem({{ x.pk }})"><b>Buyout</b></div>{% else %} <div class="butt"> --- </div> {% endif %}
+                </div>
             {% endfor %}
 
         </div>

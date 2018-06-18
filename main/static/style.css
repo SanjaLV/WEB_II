@@ -12,7 +12,7 @@ header {
 }
 
 .menu {
-    /*display: flex;*/
+    display: flex;
     justify-content: center;
     font-size: 30px;
     margin-bottom: 1px;
@@ -73,7 +73,7 @@ header .item:hover {
 }
 
 #itemform input {
-    width: 50px;
+    width: 100px;
     margin-bottom: 10px;
 }
 

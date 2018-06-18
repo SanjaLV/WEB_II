@@ -149,12 +149,12 @@ def Auction(request):
 
     if request.user.is_authenticated:
 
+        char = Character.objects.get(user = request.user)
         loots, values = doFilter(request.COOKIES)
 
-        print(request.COOKIES)
-        print(loots)
 
-        context = {'filter': values, 'loots': loots}
+        print(values)
+        context = {'filter': values, 'loots': loots, 'char': char}
 
         return render(request, "BrowseAuction.html", context=context)
 

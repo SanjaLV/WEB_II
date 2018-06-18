@@ -163,7 +163,7 @@ def SellLoot(Buyer, loot, price):
 
     auc_log = AuctionLog.objects.create()
     auc_log.character_id = Seller
-    auc_log.time = datetime.datetime.now()
+    auc_log.time = timezone.now()
     auc_log.bought = False
     auc_log.price = price
     auc_log.item = item
@@ -172,15 +172,15 @@ def SellLoot(Buyer, loot, price):
 
     auc_log = AuctionLog.objects.create()
     auc_log.character_id = Buyer
-    auc_log.time = datetime.datetime.now()
+    auc_log.time = timezone.now()
     auc_log.bought = True
     auc_log.price = price
     auc_log.item = item
 
     auc_log.save()
 
-    Seller.gold += loot.price
-    Buyer.gold -= loot.price
+    Seller.gold += price
+    Buyer.gold -= price
 
     Seller.save()
     Buyer.save()
@@ -287,7 +287,7 @@ def doFilter(COOKIES):
     try:
         values['crh'] = 0
         if 'crh' in COOKIES:
-            values['chr'] = int(COOKIES['crh'])
+            values['crh'] = int(COOKIES['crh'])
     except:
         pass
     for x in loots:

@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block header %}
+    <div class="menu">
+        <a href="/auction">{% trans "Browse" %}</a>
+        <a href="/auction/my">{% trans "Active" %}</a>
+        <a href="/auction/create">{% trans "Create" %}</a>
+        <a href="/auction/log">{% trans "Hisrory" %}</a>
+    </div>
+
+{% endblock %}
+
 
 {% block content %}
 
-    <a href="/auction">{% trans "Browse" %}</a>
-    <a href="/auction/my">{% trans "Active" %}</a>
-    <a href="/auction/create">{% trans "Create" %}</a>
-    <a href="/auction/log">{% trans "Hisrory" %}</a>
 
+
+    <h1><div style="text-align: center;">Your gold: {{ char.gold }}</div></h1>
 
     {% block main %}
 
