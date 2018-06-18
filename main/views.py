@@ -11,7 +11,7 @@ from django.http import HttpResponseForbidden
 
 # Create your views here.
 from main.GameLogic import GENERATE_NEW_ITEM, LocalItem, ValidateItem, RemoveItem, EquipItem, ProcessLoots, SellLoot, \
-    doFilter, RemoveActiveBet, LocalHistory
+    doFilter, RemoveActiveBet, LocalHistory, LocalLoot, LocalBet
 from main.models import Character, Item, Loot, Bid, AuctionLog
 
 
@@ -172,9 +172,16 @@ def AuctionActive(request):
         loots = Loot.objects.filter(character_id=char.pk).filter(active=True)
         bets = Bid.objects.filter(character_id=char.pk)
 
-        context = {'loots': loots, 'bets': bets}
+        local_loots = []
+        for x in loots:
+            local_loots.append(LocalLoot(x))
+        local_bets = []
+        for x in bets:
+            local_bets.append(LocalBet(x))
 
-        return render(request, 'auction_active.html', context=context)
+        context = {'loots': local_loots, 'bets': local_bets, 'char': char}
+
+        return render(request, 'auction/auction_active.html', context=context)
     else:
         return HttpResponseForbidden()
 
@@ -206,7 +213,6 @@ def AuctionFed(request):
         for x in logs:
             local_log.append(LocalHistory(x))
 
-        print(local_log)
         context = {'logs': local_log, 'char': char}
 
         return render(request, 'auction/auction_log.html', context=context)

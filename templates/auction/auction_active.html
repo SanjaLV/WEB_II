@@ -1,0 +1,124 @@
+{% extends "auction/Auction.html" %}
+{% load i18n %}
+
+
+{% block script %}
+
+    {% include "items/Script.js" %}
+    {% include "items/on_click_do_nothing.js" %}
+
+    {% for x in loots %}
+        {% include "items/item_js.js" with item=x.item_id only %}
+    {% endfor %}
+    {% for x in bets %}
+        {% include "items/item_js.js" with item=x.item %}
+    {% endfor %}
+
+    {% include "auction/bet_buy.js" %}
+
+{% endblock %}
+
+{% block main %}
+
+    {% include "items/stat_table.html" %}
+
+    <div class="main">
+
+        <div class="lots">
+            <div class="head">
+                <h2>My Loots</h2>
+            </div>
+            <div class="head">
+                <div class="info">
+                    Item
+                </div>
+                <div class="info">
+                    Current bid
+                </div>
+                <div class="info">
+                    Buyout price
+                </div>
+                <div class="info">
+                    Cancel
+                </div>
+
+            </div>
+            {% for x in loots %}
+                <div class="head">
+                    <div class="info">
+                        {% include "items/item_small.html" with item=x.item_id %}
+                    </div>
+                    <div class="info">
+                        {% if x.biddable == True %}
+                            {{ x.next_bid }}
+                        {% else %}
+                            ----
+                        {% endif %}
+                    </div>
+                    <div class="info">
+                        {{ x.buy_out }}
+                    </div>
+                    <div class="info">
+                        <div class="butt" onclick="Cancel({{ x.pk }}"> Cancel </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="main">
+        <div class="lots">
+            <div class="head">
+                <h2>My Bets</h2>
+            </div>
+            <div class="head">
+                <div class="info">
+                    Item
+                </div>
+                <div class="info">
+                    Current bid
+                </div>
+                <div class="info">
+                    Buyout price
+                </div>
+                <div class="info">
+                    Place bet
+                </div>
+                <data class="info">
+                    Buyout
+                </data>
+            </div>
+
+            {% for x in bets %}
+                <div class="head">
+                    <div class="info">
+                        {% include "items/item_small.html" with item=x.item only %}
+                    </div>
+                    <div class="info">
+                        {% if x.active == True %}
+                            <font color="green">
+                                {{ x.next_bet }}
+                            </font>
+                        {% else %}
+                            <font color="red">
+                                {{ x.next_bet }}
+                            </font>
+                        {% endif %}
+
+                    </div>
+                    <div class="info">
+                        {{ x.buy_out }}
+                    </div>
+                    <div class="info">
+                        <div class="butt" onclick="MakeBet({{ x.loot_pk }})"> <b> Place bet </b> </div>
+                    </div>
+                    <div class="info">
+                        <div class="butt" onclick="BuyItem({{ x.loot_pk }})"><b>Buyout</b></div>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+{% endblock %}

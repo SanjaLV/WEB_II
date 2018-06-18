@@ -130,7 +130,7 @@ class LocalLoot:
         self.biddable = loot.biddable
         self.buy_out = loot.buy_out
         self.next_bid = loot.next_bid
-        self.item_id = None
+        self.item_id = LocalItem(loot.item_id)
 
 class LocalHistory:
     def __init__(self, AH):
@@ -145,8 +145,9 @@ class LocalBet:
         self.pk = bet.pk
         self.loot_pk = bet.loot_id.pk
         self.active = bet.active
-        self.next_bet = bet.next_bid
-        self.buy_out = bet.buy_out
+        self.next_bet = bet.loot_id.next_bid
+        self.buy_out = bet.loot_id.buy_out
+        self.item = LocalItem(bet.loot_id.item_id)
 
 
 def ValidateItem(char, item, inUsed=True):
@@ -373,7 +374,6 @@ def doFilter(COOKIES):
                 ok = False
         if ok:
             y = LocalLoot(x)
-            y.item_id = item
             res.append(y)
 
     return res, values
