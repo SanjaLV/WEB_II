@@ -16,6 +16,11 @@
 
     {% include "auction/bet_buy.js" %}
 
+    function Cancel(loot_id) {
+        str = "/auction/remove/" + loot_id;
+        window.location = str;
+    }
+
 {% endblock %}
 
 {% block main %}
