@@ -10,7 +10,8 @@ from django.utils.translation import gettext_lazy as _
 from django.http import HttpResponseForbidden
 
 # Create your views here.
-from main.GameLogic import GENERATE_NEW_ITEM, LocalItem, ValidateItem, RemoveItem, EquipItem, ProcessLoots, SellLoot, doFilter
+from main.GameLogic import GENERATE_NEW_ITEM, LocalItem, ValidateItem, RemoveItem, EquipItem, ProcessLoots, SellLoot, \
+    doFilter, RemoveActiveBet
 from main.models import Character, Item, Loot, Bid, AuctionLog
 
 
@@ -152,11 +153,10 @@ def Auction(request):
         char = Character.objects.get(user = request.user)
         loots, values = doFilter(request.COOKIES)
 
-
         print(values)
         context = {'filter': values, 'loots': loots, 'char': char}
 
-        return render(request, "BrowseAuction.html", context=context)
+        return render(request, "auction/BrowseAuction.html", context=context)
 
     else:
         return HttpResponseForbidden()
@@ -297,7 +297,7 @@ def MakeBet(request, loot_id):
         if not loot.biddable:
             return HttpResponseForbidden()
 
-        new_bid = request.COOKIES['bet']
+        new_bid = loot.next_bid
 
         if (not new_bid) or (new_bid < loot.next_bid):
             return Auction(request)
@@ -306,33 +306,27 @@ def MakeBet(request, loot_id):
 
         if char.gold < new_bid:
             return HttpResponseForbidden()
-
+        print(-new_bid)
         char.gold -= new_bid
         char.save()
 
         # remove previous bet
+        RemoveActiveBet(loot)
 
-        prev_bet = Bid.objects.filter(loot_id=loot).filter(active=True)
 
-        if prev_bet:
-            prev_bet.active = False
-            moneyBack = prev_bet.character_id
-            moneyBack.gold += prev_bet.price
-            prev_bet.save()
-            moneyBack.save()
 
         # make new bet
         BET = Bid.objects.create()
         BET.loot_id = loot
         BET.character_id = char
         BET.active = True
-        BET.price = loot.next_bid
+        BET.price = new_bid
         BET.save()
 
         loot.next_bid = (loot.next_bid + 1 + (new_bid // 3))
         loot.save()
 
-
+        return AuctionActive(request)
 
     else:
         return HttpResponseForbidden()

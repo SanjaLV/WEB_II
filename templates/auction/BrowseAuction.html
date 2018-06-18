@@ -1,4 +1,4 @@
-{% extends "Auction.html" %}
+{% extends "auction/Auction.html" %}
 {% load i18n %}
 
 
@@ -48,6 +48,17 @@
         str = "/auction/buy/" + loot_id;
         window.location = str;
     }
+
+    {% include "items/Script.js" %}
+    {% include "items/on_click_do_nothing.js" %}
+
+    {% for x in loots %}
+        {% include "items/item_js.js" with item=x.item_id only %}
+    {% endfor %}
+
+
+
+
 
 
 {% endblock %}
@@ -105,6 +116,9 @@
 
         </div>
         <div class="lots">
+
+            {% include "items/stat_table.html" %}
+
             <div class="head">
                 <div class="item">Item</div>
                 <div class="item">iLvl</div>
@@ -115,8 +129,8 @@
             </div>
             {% for x in loots %}
                 <div class ="head">
-                    <div class="info">{{ x.item_id.item_name }}</div>
-                    <div class="info">{{ x.item_id.item_level }}</div>
+                    <div class="info">{% include "items/item_small.html" with item=x.item_id only %}</div>
+                    <div class="info">{{ x.item_id.ilvl }}</div>
                     <div class="info">{{ x.next_bid }}</div>
                     <div class="info">{{ x.buy_out }}</div>
                     {% if x.biddable == True and char.gold >= x.next_bid %}<div class="butt" onclick="MakeBet({{ x.pk }})"> <b> Place bet </b> </div>{% else %}<div class="butt"> --- </div>{% endif %}

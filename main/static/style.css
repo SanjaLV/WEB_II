@@ -144,4 +144,18 @@ header .item:hover {
 .item_info {
     width: 200px;
     height: 50px;
+    background-color: bisque;
+}
+
+tr, td {
+    padding: 15px;
+    text-align: center;
+}
+table.stat_table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    height: 125px;
+    margin: 0 auto;
+    width: 70%;
+    background-color: #57ebff;
 }

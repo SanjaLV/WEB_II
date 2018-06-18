@@ -3,19 +3,20 @@
 {% block script %}
 
 
-    var Items = {}
+    {% load static %}
+    {% include "items/Script.js" %}
+    {% include "items/on_click_eq.js" %}
 
     {% for x in items %}
-        {% include "item_js.js" with item=x only %}
+        {% include "items/item_js.js" with item=x only %}
     {% endfor %}
 
     {% for x in eq_items %}
-        {% include "item_js.js" with item=x only %}
+        {% include "items/item_js.js" with item=x only %}
     {% endfor %}
 
 
-    {% load static %}
-    {% include "Script.js" %}
+
 
 
 {% endblock %}
@@ -34,34 +35,22 @@
         Dodge    : {{ stats.5 }}<br>
         Critical : {{ stats.6 }}<br>
         Item lvl : {{ ilvl }}<br>
-        Weapon   : {% include "item_small.html" with item=eq_items.0 only %}
-        Helm     : {% include "item_small.html" with item=eq_items.1 only %}
-        Armor    : {% include "item_small.html" with item=eq_items.2 only %}
-        Offhand  : {% include "item_small.html" with item=eq_items.3 only %}
+        Weapon   : {% include "items/item_small.html" with item=eq_items.0 only %}
+        Helm     : {% include "items/item_small.html" with item=eq_items.1 only %}
+        Armor    : {% include "items/item_small.html" with item=eq_items.2 only %}
+        Offhand  : {% include "items/item_small.html" with item=eq_items.3 only %}
 
 
     </div>
 
-    <div >
-        Item name :<span id="item_name"></span> <br>
-        Strength  :<span id="str"></span> <br>
-        Dexterity :<span id="dex"></span> <br>
-        Vitality  :<span id="vit"></span> <br>
-        Damage    :<span id="dmg"></span> <br>
-        Armor     :<span id="arm"></span> <br>
-        Dodge %   :<span id="dod"></span> <br>
-        Critical %:<span id="crh"></span> <br>
-        Item LVL  :<span id="ilvl"></span> <br>
 
-
-
-    </div>
+    {% include "items/stat_table.html" %}
 
 
     <div id="scrolls">
 
         {% for x in items %}
-            {% include "item_small.html" with item=x only %}
+            {% include "items/item_small.html" with item=x only %}
         {% endfor %}
 
     </div>

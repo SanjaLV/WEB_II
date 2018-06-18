@@ -2,7 +2,7 @@ import datetime
 
 from django.utils import timezone
 
-from main.models import Item, Affix, Character, Loot, AuctionLog
+from main.models import Item, Affix, Character, Loot, AuctionLog, Bid
 from random import randint
 
 # GAME CONSTANTS
@@ -110,7 +110,7 @@ def GENERATE_NEW_ITEM(char_pk):
     return new_i.pk
 
 
-class LocalItem():
+class LocalItem:
     def __init__(self, item):
         self.pk = item.pk
         self.name = item.item_name
@@ -122,6 +122,15 @@ class LocalItem():
         afxs = Affix.objects.filter(item_id=item.pk)
         for x in afxs:
             self.stats[x.affix_tupe] += x.affix_value
+
+
+class LocalLoot:
+    def __init__(self, loot):
+        self.pk = loot.pk
+        self.biddable = loot.biddable
+        self.buy_out = loot.buy_out
+        self.next_bid = loot.next_bid
+        self.item_id = None
 
 
 def ValidateItem(char, item, inUsed=True):
@@ -151,6 +160,18 @@ def RemoveItem(char, item_tupe):
         item.save()
 
     char.save()
+
+
+def RemoveActiveBet(loot):
+    prev_bet = Bid.objects.filter(loot_id=loot).filter(active=True)
+    if prev_bet:
+        prev_bet = prev_bet[0]
+        prev_bet.active = False
+        moneyBack = prev_bet.character_id
+        moneyBack.gold += prev_bet.price
+        print(prev_bet.price)
+        prev_bet.save()
+        moneyBack.save()
 
 
 def SellLoot(Buyer, loot, price):
@@ -185,6 +206,8 @@ def SellLoot(Buyer, loot, price):
     Seller.save()
     Buyer.save()
 
+    RemoveActiveBet(loot)
+
     loot.delete()
 
 
@@ -210,7 +233,7 @@ def ProcessLoots():
     time_now = timezone.now()
 
     for x in loots:
-       if x.end_time < time_now:
+        if x.end_time < time_now:
             # TODO END LOOT
             pass
 
@@ -333,6 +356,8 @@ def doFilter(COOKIES):
             if item.stats[6] < values['crh']:
                 ok = False
         if ok:
-            res.append(x)
+            y = LocalLoot(x)
+            y.item_id = item
+            res.append(y)
 
     return res, values

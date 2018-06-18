@@ -2,7 +2,7 @@
 
 {% if item %}
 
-    <button class="item_info" id="{{ item.pk }}" onmouseenter="ClickItem({{ item.pk }})" onclick="Equip({{ item.pk }})">
+    <button class="item_info" id="{{ item.pk }}" onmouseenter="Display({{ item.pk }})" onclick="ItemClick({{ item.pk }})">
         {% if item.rarity == 0  %}
             <span style="color: #696969; ">
         {% elif item.rarity == 1 %}
