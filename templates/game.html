@@ -19,7 +19,7 @@
 
 
     {% block main_window %}
-        <h1>Hello {{ user.username }}</h1>
+        <h1>{% trans "Hello" %} {{ user.username }}</h1>
         <h2>{% trans "Your gold :" %} {{ char.gold }} </h2>
         <a href="/game/freegold">{% trans "Get free Gold" %}</a> <br>
         <a href="/game/getItem">{% trans "Get Item" %}</a>
