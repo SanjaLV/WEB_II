@@ -17,7 +17,7 @@
     {% include "auction/bet_buy.js" %}
 
     function Cancel(loot_id) {
-        str = "/auction/remove/" + loot_id;
+        var str = "/auction/remove/" + loot_id;
         window.location = str;
     }
 
@@ -64,7 +64,7 @@
                         {{ x.buy_out }}
                     </div>
                     <div class="info">
-                        <div class="butt" onclick="Cancel({{ x.pk }}"> Cancel </div>
+                        <div class="butt" onclick="Cancel({{ x.pk }})"> Cancel </div>
                     </div>
                 </div>
             {% endfor %}
