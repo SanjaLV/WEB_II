@@ -143,14 +143,12 @@ def ItemSwitch(request, item_id):
 # main page for Auction
 
 
-
-
 def Auction(request):
     ProcessLoots()
 
     if request.user.is_authenticated:
 
-        char = Character.objects.get(user = request.user)
+        char = Character.objects.get(user=request.user)
         loots, values = doFilter(request.COOKIES)
 
         print(values)
@@ -193,9 +191,14 @@ def AuctionCreate(request):
 
         items = Item.objects.filter(character_id=char.pk).filter(used=False)
 
-        context = {'items': items}
+        local_item = []
 
-        return render(request, 'auction_make.html', context=context)
+        for x in items:
+            local_item.append(LocalItem(x))
+
+        context = {'items': local_item, 'char':char}
+
+        return render(request, 'auction/auction_make.html', context=context)
     else:
         return HttpResponseForbidden()
 
@@ -326,8 +329,6 @@ def MakeBet(request, loot_id):
 
         # remove previous bet
         RemoveActiveBet(loot)
-
-
 
         # make new bet
         BET = Bid.objects.create()
