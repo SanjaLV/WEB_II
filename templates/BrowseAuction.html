@@ -1,0 +1,120 @@
+{% extends "Auction.html" %}
+{% load i18n %}
+
+
+{% block script %}
+
+    function Submit() {
+        var form = new FormData(document.getElementById("itemform"));
+
+        var tupe = form.get("item");
+        var ilvl = form.get("ilvl");
+        var str  = form.get("str");
+        var dex  = form.get("dex");
+        var vit  = form.get("vit");
+        var dmg  = form.get("dmg");
+        var arm  = form.get("arm");
+        var dod  = form.get("dod");
+        var crh  = form.get("crh");
+        var max_price = form.get("max_price");
+
+
+
+        document.cookie = "tupe =" + tupe;
+        document.cookie = "ilvl =" + ilvl;
+        document.cookie = "str =" + str;
+        document.cookie = "dex =" + dex;
+        document.cookie = "vit =" + vit;
+        document.cookie = "dmg =" + dmg;
+        document.cookie = "arm =" + arm;
+        document.cookie = "dod =" + dod;
+        document.cookie = "crh =" + crh;
+        document.cookie = "max_price =" + max_price;
+
+
+        window.location = "";
+
+
+
+
+    }
+
+{% endblock %}
+
+{% block main %}
+
+    <div class="main">
+        <div class="leftmenu">
+            <form id="itemform">
+                <select name="item" form="itemform">
+					<option {% if filter.tupe == 69 %} selected {% endif %} value="69">All</option>
+                    <option {% if filter.tupe ==  1 %} selected {% endif %} value="1">Helm</option>
+                    <option {% if filter.tupe ==  0 %} selected {% endif %} value="0">Weapon</option>
+                    <option {% if filter.tupe ==  2 %} selected {% endif %} value="2">Armor</option>
+                    <option {% if filter.tupe ==  3 %} selected {% endif %} value="3">Offhand</option>
+                  </select>
+                <div class="input">
+                    <label for="max_price">Max Price</label>
+                    <input type="number" name="max_price" value="{{ filter.max_price }}">
+                </div>
+                <div class="input">
+                    <label for="ilvl">iLvl</label>
+                    <input type="number" name="ilvl" value="{{ filter.ilvl }}">
+                </div>
+                <div class="input">
+                    <label for="str">Str</label>
+                    <input type="number" name="str" value="{{ filter.str }}">
+                </div>
+                <div class="input">
+                    <label for="dex">Dex</label>
+                    <input type="number" name="dex" value="{{ filter.dex }}">
+                </div>
+                <div class="input">
+                    <label for="vit">Vit</label>
+                    <input type="number" name="vit" value="{{ filter.vit }}">
+                </div>
+                <div class="input">
+                    <label for="dmg">Dmg</label>
+                    <input type="number" name="dmg" value="{{ filter.dmg }}">
+                </div>
+                <div class="input">
+                    <label for="arm">Arm</label>
+                    <input type="number" name="arm" value="{{ filter.arm }}">
+                </div>
+                <div class="input">
+                    <label for="dod">Dod</label>
+                    <input type="number" name="dod" value="{{ filter.dod }}">
+                </div>
+                <div class="input">
+                    <label for="crh">Crh</label>
+                    <input type="number" name="crh" value="{{ filter.chr }}">
+                </div>
+                <button onclick="Submit()">Search</button>
+            </form>
+        </div>
+        <div class="lots">
+            <div class="head">
+                <div class="item">Item</div>
+                <div class="item">iLvl</div>
+                <div class="item">Current bid</div>
+                <div class="item">Buyout price</div>
+                <div class="item">Place bet</div>
+                <div class="item">Buyout</div>
+            </div>
+            <div class="head">
+                <div class="info">Helm</div>
+                <div class="info">120</div>
+                <div class="info">15</div>
+                <div class="info">60</div>
+                <div class="butt"><b>Place bet</b></div> <!-- can change <div> to button or smth-->
+                <div class="butt"><b>Buyout</b></div>
+            </div>
+
+            {% for x in loots %}
+                {{ x.item_id.item_name }} {{ x.next_bid }} {{ x.end_time }}
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

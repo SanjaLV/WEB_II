@@ -16,20 +16,33 @@
     <title>{% block title %}My amazing site{% endblock %}</title>
 </head>
 
+<header>
+
+
+    <a class="nav" href="/">{% trans "Home" %}</a>
+    <a class="nav"  href="/auction">{% trans "Auction" %}</a>
+    <a class="nav"  href="/ru/language/ru">{% trans "Russian" %}</a>
+    <a class="nav"  href="/en/language/en">{% trans "English" %}</a>
+    {% if user.is_authenticated %}
+        <a class="nav"  href="accounts/logout">{% trans "Logout" %}</a>
+    {% else %}
+        <a class="nav"  href="accounts/login">{% trans "Login" %}</a>
+    {% endif %}
+
+
+</header>
+<center>
+    {% block header %}
+    {% endblock %}
+</center>
+
+
+
+
+
 <body>
-    <div id="topnav">
-        {% block topnav %}
-            <a href="/">{% trans "Home" %}</a>
-            <a href="/Auction">{% trans "Auction" %}</a>
-            <a href="/ru/language/ru">{% trans "Russian" %}</a>
-            <a href="/en/language/en">{% trans "English" %}</a>
-            {% if user.is_authenticated %}
-                <a href="accounts/logout">{% trans "Logout" %}</a>
-            {% else %}
-                <a href="accounts/login">{% trans "Login" %}</a>
-            {% endif %}
-        {% endblock %}
-    </div>
+
+
 
     <div id="content">
         {% block content %}

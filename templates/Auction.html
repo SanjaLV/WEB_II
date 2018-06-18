@@ -4,10 +4,16 @@
 
 {% block content %}
 
+    <a href="/auction">{% trans "Browse" %}</a>
+    <a href="/auction/my">{% trans "Active" %}</a>
+    <a href="/auction/create">{% trans "Create" %}</a>
+    <a href="/auction/log">{% trans "Hisrory" %}</a>
 
-    <div>
 
-    </div>
+    {% block main %}
 
+
+
+    {% endblock %}
 
 {% endblock %}

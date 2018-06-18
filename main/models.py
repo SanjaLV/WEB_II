@@ -38,6 +38,7 @@ class Loot(models.Model):
     next_bid = models.IntegerField(default=0)
     biddable = models.BooleanField(default=False)
     end_time = models.DateTimeField(null=True)
+    active = models.BooleanField(default=False)
 
 class Bid(models.Model):
     character_id = models.ForeignKey(Character, on_delete=models.CASCADE,null=True)
@@ -52,7 +53,6 @@ class AuctionLog(models.Model):
     bought = models.BooleanField(default=False)
     price = models.IntegerField(default=0)
     item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True)
-
 
 
 
