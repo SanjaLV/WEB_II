@@ -224,7 +224,7 @@ def AuctionFed(request):
         return HttpResponseForbidden()
 
 
-def MakeLoot(request, item_id):
+def MakeLoot(request, item_id, buy_price = 0, start_price = 0):
     if request.user.is_authenticated:
 
         current_user = request.user
@@ -232,16 +232,22 @@ def MakeLoot(request, item_id):
         item = Item.objects.get(pk=item_id)
         if ValidateItem(char, item):
 
+
+
+            if buy_price == 0:
+                return AuctionCreate(request)
+
             this_loot = Loot.objects.create()
             this_loot.item_id = item
             this_loot.character_id = char
             this_loot.active = True
-            if request.COOKIES['start_bet'] > 0:
+
+            if start_price > 0:
                 this_loot.biddable = True
-                this_loot.next_bid = int(request.COOKIES['start_bet'])
+                this_loot.next_bid = start_price
             else:
                 this_loot.biddable = False
-            this_loot.buy_out = int(request.COOKIES['buy_out'])
+            this_loot.buy_out = buy_price
             this_loot.end_time = timezone.now() + timezone.timedelta(hours=+24)
 
             this_loot.save()

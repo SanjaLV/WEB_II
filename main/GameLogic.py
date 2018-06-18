@@ -249,6 +249,7 @@ def ProcessLoots():
 
     time_now = timezone.now()
 
+
     for x in loots:
         if x.end_time < time_now:
             # TODO END LOOT

@@ -12,14 +12,9 @@
         if (last_id == 0) return;
 
         var max_price = document.getElementById("max_price").value;
-        var bid  = document.getElementById("checkBox").value;
         var start_bet = document.getElementById("start_bet").value;
 
-        document.cookies = "max_price =" + max_price;
-        document.cookies = "bid =" + bid;
-        document.cookies = "start_bet =" + start_bet;
-
-        str = "auction/create/" + last_id;
+        str = "create/" + last_id + "/" + max_price + "/" + start_bet;
         window.location = str;
 
     }
@@ -39,13 +34,10 @@
         <div class="lots">
             <div class="head">
                 <div class="info_long">
-                    {% trans "Price" %}: <input id="max_price" type="int" width="48px">
-                </div>
-                <div class="info">
-                    {% trans "Biddable" %}: <input id="checkBox" type="checkbox">
+                    {% trans "Price" %}: <input id="max_price" type="int" value="100">
                 </div>
                 <div class="info_long">
-                    {% trans "Start bid" %}: <input id="start_bet" type="int">
+                    {% trans "Start bid" %}: <input id="start_bet" type="int" value="0">
                 </div>
                 <div class="info">
                     <div class="butt" onclick="CreateLoot()">{% trans "Create" %}</div>
